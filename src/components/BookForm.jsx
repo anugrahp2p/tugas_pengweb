@@ -37,26 +37,28 @@ export default function BookForm({ onAddBook }) {
   };
 
   return (
-    <section className="form-section">
-      <button
-        type="button"
-        className={isOpen ? "btn-secondary" : "btn-primary"}
-        aria-expanded={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? "Tutup form" : "Tambah buku"}
-      </button>
+    <section>
+      <div className="action-bar">
+        <h2 className="section-title">Daftar Buku</h2>
+        <button
+          type="button"
+          className={isOpen ? "btn-secondary" : "btn-primary"}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? "Batal" : "Tambah Buku Baru"}
+        </button>
+      </div>
 
       {isOpen && (
-        <form className="book-form" onSubmit={handleSubmit}>
-          <h3>Data buku baru</h3>
+        <form className="book-form-card" onSubmit={handleSubmit}>
+          <h3 className="form-header-title">Input Data Koleksi Buku</h3>
           <div className="form-grid">
             <div className="form-group">
-              <label htmlFor="title">Judul</label>
+              <label htmlFor="title">Judul Buku *</label>
               <input
                 id="title"
                 type="text"
-                placeholder="Fear and Trembling"
+                placeholder="cth: Fear and Trembling"
                 value={formData.title}
                 onChange={handleChange("title")}
                 required
@@ -64,11 +66,11 @@ export default function BookForm({ onAddBook }) {
             </div>
 
             <div className="form-group">
-              <label htmlFor="author">Penulis</label>
+              <label htmlFor="author">Penulis *</label>
               <input
                 id="author"
                 type="text"
-                placeholder="Søren Kierkegaard"
+                placeholder="cth: Søren Kierkegaard"
                 value={formData.author}
                 onChange={handleChange("author")}
                 required
@@ -91,11 +93,11 @@ export default function BookForm({ onAddBook }) {
             </div>
 
             <div className="form-group">
-              <label htmlFor="year">Tahun terbit</label>
+              <label htmlFor="year">Tahun Terbit *</label>
               <input
                 id="year"
                 type="number"
-                placeholder="1843"
+                placeholder="cth: 1843"
                 value={formData.year}
                 onChange={handleChange("year")}
                 required
@@ -103,20 +105,18 @@ export default function BookForm({ onAddBook }) {
             </div>
 
             <div className="form-group">
-              <label htmlFor="pages">
-                Jumlah halaman <span className="hint">(opsional)</span>
-              </label>
+              <label htmlFor="pages">Jumlah Halaman</label>
               <input
                 id="pages"
                 type="number"
-                placeholder="160"
+                placeholder="cth: 160"
                 value={formData.pages}
                 onChange={handleChange("pages")}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="status">Status bacaan</label>
+              <label htmlFor="status">Status Bacaan</label>
               <select
                 id="status"
                 value={formData.status}
@@ -129,13 +129,11 @@ export default function BookForm({ onAddBook }) {
             </div>
 
             <div className="form-group full-width">
-              <label htmlFor="coverUrl">
-                URL sampul <span className="hint">(opsional)</span>
-              </label>
+              <label htmlFor="coverUrl">URL Sampul Gambar (Opsional)</label>
               <input
                 id="coverUrl"
                 type="url"
-                placeholder="https://"
+                placeholder="https://..."
                 value={formData.coverUrl}
                 onChange={handleChange("coverUrl")}
               />
@@ -143,7 +141,7 @@ export default function BookForm({ onAddBook }) {
           </div>
 
           <button type="submit" className="btn-primary">
-            Tambah
+            Simpan ke Arsip
           </button>
         </form>
       )}

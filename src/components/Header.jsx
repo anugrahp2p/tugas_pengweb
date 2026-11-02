@@ -1,12 +1,11 @@
 export default function Header() {
   return (
     <header className="app-header">
-      <div className="header-brand">
-        <div className="brand-icon">🏛️</div>
-        <div>
-          <h1>Arsipindex</h1>
-          <p className="subtitle">Koleksi Literatur & Rekam Bacaan Digital</p>
-        </div>
+      <div>
+        <h1 className="brand-title">Arsipindex</h1>
+        <p className="subtitle">
+          Sistem Manajemen Literatur & Track Bacaan Digital
+        </p>
       </div>
     </header>
   );

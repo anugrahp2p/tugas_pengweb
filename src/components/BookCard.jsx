@@ -1,58 +1,63 @@
-const STATUS_META = {
-  "Selesai Dibaca": { key: "done", nextLabel: "Kembalikan ke rencana" },
-  "Sedang Dibaca": { key: "reading", nextLabel: "Tandai selesai" },
-  "Rencana Dibaca": { key: "planned", nextLabel: "Mulai membaca" },
+const STATUS_CONFIG = {
+  "Selesai Dibaca": {
+    className: "status-done",
+    nextLabel: "Kembalikan ke Rencana",
+  },
+  "Sedang Dibaca": { className: "status-reading", nextLabel: "Tandai Selesai" },
+  "Rencana Dibaca": { className: "status-planned", nextLabel: "Mulai Membaca" },
 };
 
 export default function BookCard({ book, onDeleteBook, onToggleStatus }) {
-  const { key, nextLabel } =
-    STATUS_META[book.status] ?? STATUS_META["Rencana Dibaca"];
+  const config = STATUS_CONFIG[book.status] ?? STATUS_CONFIG["Rencana Dibaca"];
 
   return (
-    <li className="book-row">
-      <div className="book-cover-frame">
-        {book.coverUrl && (
+    <li className="book-card-item">
+      {/* Sampul Buku */}
+      <div className="book-cover-box">
+        {book.coverUrl ? (
           <img
             src={book.coverUrl}
-            alt={`Sampul ${book.title}`}
-            className="book-cover"
+            alt={`Cover ${book.title}`}
+            className="book-cover-img"
             loading="lazy"
             onError={(e) => {
               e.currentTarget.style.display = "none";
             }}
           />
+        ) : (
+          <div className="book-cover-placeholder">No Cover</div>
         )}
       </div>
 
-      <div className="book-main">
+      {/* Informasi Utama */}
+      <div className="book-info-main">
         <h3 className="book-title">{book.title}</h3>
         <p className="book-author">{book.author}</p>
-
-        <div className="book-meta">
-          <span>{book.category}</span>
-          <span>{book.year}</span>
-          {book.pages > 0 && <span>{book.pages} halaman</span>}
+        <div className="book-tags">
+          <span className="tag-category">{book.category}</span>
+          <span className="tag-meta">{book.year}</span>
+          {book.pages > 0 && (
+            <span className="tag-meta">• {book.pages} hlm</span>
+          )}
         </div>
       </div>
 
-      <div className="book-side">
-        <p className="book-status">
-          <span className={`status-mark mark-${key}`} aria-hidden="true" />
+      {/* Status & Tombol Aksi */}
+      <div className="book-status-actions">
+        <span className={`status-badge ${config.className}`}>
           {book.status}
-        </p>
-
-        <div className="book-actions">
+        </span>
+        <div className="action-buttons">
           <button
             type="button"
-            className="link-btn"
+            className="btn-action-text"
             onClick={() => onToggleStatus(book.id)}
           >
-            {nextLabel}
+            {config.nextLabel}
           </button>
           <button
             type="button"
-            className="link-btn link-danger"
-            aria-label={`Hapus ${book.title}`}
+            className="btn-action-delete"
             onClick={() => onDeleteBook(book.id)}
           >
             Hapus
