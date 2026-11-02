@@ -1,16 +1,37 @@
-# React + Vite
+# Arsipindex Digital Reading Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Arsipindex adalah aplikasi web berbasis React + Vite yang digunakan untuk pencatatan dan pengelolaan koleksi literatur. Aplikasi ini menyediakan antarmuka untuk memantau data dan status bacaan.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Fitur Utama
 
-## React Compiler
+* **Manajemen Data Bacaan**: Pencatatan informasi buku, pembaruan status bacaan, dan penghapusan data koleksi.
+* **Pengelompokan & Status**: Pemantauan data berdasarkan kategori literatur dan status bacaan.
+* **Ringkasan Koleksi**: Menampilkan statistik jumlah koleksi buku beserta statusnya.
+* **Antarmuka Komponen**: Struktur halaman yang dibangun menggunakan komponen React.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Teknologi
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend**: React (Vite)
+* **Styling**: CSS 
+
+
+---
+
+## Struktur Proyek
+
+```text
+arsipindex-frontend/
+├── src/
+│   ├── assets/          # Aset gambar dan media
+│   ├── components/      # Komponen UI
+│   ├── utils/           # Fungsi pembantu (utility)
+│   ├── App.jsx          # Komponen utama & pengelolaan state
+│   ├── App.css          # Styling aplikasi
+│   ├── index.css        # Styling global
+│   └── main.jsx         # Entry point aplikasi
+├── package.json
+└── README.md
